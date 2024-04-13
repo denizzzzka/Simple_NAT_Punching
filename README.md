@@ -3,10 +3,10 @@
 # Конфигурация Системы и NatPunching.gns3project
 Конфигурация и тесты проводились в GNS3. Наша система выглядит так:
 ![image](https://github.com/denizzzzka/Simple_NAT_Punching/assets/91347518/41fa067b-87c0-4680-a929-fc509444b73f)
-Здесь client и server это два взаимодействующих объекта. В данном стенде route-1 и route-2 эмулируют работу роутеров, для этого необходимо прописать для корректной эмуляции:
+Здесь client и server это два взаимодействующих объекта. В данном стенде route-1 и route-2 эмулируют работу роутеров, для этого необходимо прописать для корректной эмуляции:  
 `iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE`  
 `iptables -A INPUT -i eth0 -m state --state ESTABLISHED,RELATED -j ACCEPT`  
-`iptables -A INPUT -i eth0 -j DROP`
+`iptables -A INPUT -i eth0 -j DROP`  
 helpserver - это вспомогательный сервер, с помощью которого происходит обмен глобальными адресами и портами. NAT в этой системе нужен для подгруке gcc, iptables и т.д.
 Для корректной работы стенда, после подгрузке всего необходимого, следует установить маршруты по умолчанию для server и client. Данный проект находится в файле NatPunching.gns3project
 
