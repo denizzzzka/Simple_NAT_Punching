@@ -4,17 +4,12 @@
 Конфигурация и тесты проводились в GNS3. Наша система выглядит так :
 ![image](https://github.com/denizzzzka/Simple_NAT_Punching/assets/91347518/41fa067b-87c0-4680-a929-fc509444b73f)
 Здесь client и server это два взаимодействующих обьекта. В даннам стенде route-1 и route-2 эмулируют работу роутеров, для этого необходимо прописать для корректной эмуляции :  
-`iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+`iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE  
 iptables -A INPUT -i eth0 -m state --state ESTABLISHED,RELATED -j ACCEPT
 iptables -A INPUT -i eth0 -j DROP`  
 helpserver - это вспомогательный сервер, с помощью которого происходит обмен глобальными адрессами. NAT в этой системе нужен для подгрузки gcc, iptables и т.д.
 Для корректной работы стенда, после подгрузки всего необходимого, следует установить маршруты по умолчанию для server и client. Данный проэкт находится в файле NatPunching.gns3project 
 
--x509 - создает "учебный" сертификат  
--noenc - приватный ключ не зашифрован  
--days - время жизни, используется из-за флага -x509  
--newkey rsa - новый ключ, для генерации используется rsa, используется из-за флага -x509  
--keyout mycert.pem -out mycert.pem - куда сохраняем  
 # Компиляция  
 ` gcc -o main main.c -L/usr/lib -lssl -lcrypto`  
 # Пример файла Keys.txt  
