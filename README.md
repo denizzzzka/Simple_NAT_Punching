@@ -19,11 +19,19 @@ Helpserver принимает два запроса, помещает глоба
 ![image](https://github.com/denizzzzka/Simple_NAT_Punching/assets/91347518/d399b30f-a5d5-46ea-88d5-0d0c94f8c6bf)
 
 
-# Пример файла Keys.txt  
-![image](https://github.com/denizzzzka/SSL-client-server/assets/91347518/9f3a2bec-5c2c-4753-852d-74aab5e19ab5)  
-# Пример зашифрованных сообжений и дешифровки  
-Дешифровка выполняется с помощью сертификата и файла Keys.txt  
-Зашифрованные данные :  
-![image](https://github.com/denizzzzka/SSL-client-server/assets/91347518/cf5cb6e7-bd1d-408e-bd12-12868e1d7b31)  
-Дешифрованные : 
-![image](https://github.com/denizzzzka/SSL-client-server/assets/91347518/a732ef9c-1b57-4896-9a62-e6a437680776)
+#  Wireshark
+Ниже приведена анализ системы с помощью wireshark.  
+Просмотр канала между helpserver и switch : 
+![image](https://github.com/denizzzzka/Simple_NAT_Punching/assets/91347518/0aeec921-01af-4c30-829b-e6122f9ec4f6)
+
+Здесь мы видим 4 UDP пакета, 2 - отправленные клинентом и сервером, другие 2 - ответ от helpserver с глобальными данными в теле сообщения.
+Этот файл называется Switch-helpServer.pcapng
+
+Просмотр канала между clien и route : 
+![image](https://github.com/denizzzzka/Simple_NAT_Punching/assets/91347518/f7bad121-95fb-4940-8bb5-23d70c021fb3)
+
+Первые  2 - проброс глабальных данных, следующие - установка соединения, последнии 2 - обмен данными.
+Этот файл называется Client-route.pcapng
+
+
+
